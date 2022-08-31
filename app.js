@@ -1,10 +1,18 @@
-// npm init -y
-// npm init
-// npm i lodash
-// npm i bootstrap
+let http = require('http')
+let fs = require('fs')
 
-const _ = require('lodash');
+http.createServer((req, res) => {
+  // let text = fs.readFileSync('./content/big.txt', 'utf-8');
+  // res.end(text);
 
-const items = [1, [2, [3, [4]]]];
-const newItem = _.flattenDeep(items);
-console.log(newItem);
+  const fileStream = fs.writeFileSync('./content/big.txt', 'utf-8');
+
+  fileStream.on('open', ()=>{
+    fileStream.pipe(res);
+  });
+
+  fileStream.on('error', (err) => {
+    res.end(err);
+  });
+})
+.listen(5000);
