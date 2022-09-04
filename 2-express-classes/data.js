@@ -67,5 +67,13 @@ const products = [
   }
 ];
 
-module.exports = {products, users};
+const people = [
+  {id: 1, name: 'vijay'},
+  {id: 2, name: 'ajay'},
+  {id: 3, name: 'ramesh'},
+  {id: 4, name: 'suresh'},
+  {id: 5, name: 'gautam'},
+];
+
+module.exports = {products, users, people};
                 
